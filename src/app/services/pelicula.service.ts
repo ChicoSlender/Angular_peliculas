@@ -17,7 +17,7 @@ export class PeliculaService {
   constructor(
     private httpClient: HttpClient
   ) {
-    this.resourceURL = 'http://www.omdbapi.com/?apikey=d8298895';
+    this.resourceURL = 'https://www.omdbapi.com/?apikey=d8298895';
   }
 
   get(titulo: string, año: number, pagina: number): Observable<object> {
