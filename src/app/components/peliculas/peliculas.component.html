@@ -1,0 +1,40 @@
+<!-- Buscador de peliculas -->
+<div class="card">
+    <div class="card-body">
+        <h3>Buscar pelicula</h3>
+        <br>
+        <form name="FormBusqueda" [formGroup]="FormBusqueda">
+            <div class="form-group row">
+                <label for="titulo" class="col-form-label col-sm-1">Titulo:</label>
+                <div class="col-sm-3">
+                    <input type="text" name="titulo" id="titulo" class="form-control" formControlName="Titulo"
+                    [ngClass]="{'is-invalid': (FormBusqueda.controls.Titulo.touched || busquedaRealizada) && 
+                    FormBusqueda.controls.Titulo.errors}">
+                </div>
+                <label for="año" class="col-form-label col-sm-1">Año:</label>
+                <div class="col-sm-3">
+                    <input type="text" name="año" id="año" class="form-control" formControlName="Anio" 
+                    [ngClass]="{'is-invalid': (FormBusqueda.controls.Anio.touched || busquedaRealizada) && 
+                    FormBusqueda.controls.Anio.errors}">
+                </div>
+                <div class="col-sm-3 offset-sm-1">
+                    <button class="btn btn-primary btn-block" (click)="Pagina=1;buscar()">Buscar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Cartas con peliculas -->
+
+<div class="row mt-2">
+    <div class="col-md-4 mt-2" *ngFor="let Item of Items">
+        <app-carta-pelicula [Pelicula]="Item"></app-carta-pelicula>
+    </div>
+</div>
+
+<!-- Paginacion de NG Bootstrap -->
+<div class="d-flex justify-content-center mt-2">
+    <ngb-pagination [(page)]="Pagina" [pageSize]="10" [collectionSize]="TotalResultados" 
+    (pageChange)="buscar()" [maxSize]="20"></ngb-pagination>
+</div>

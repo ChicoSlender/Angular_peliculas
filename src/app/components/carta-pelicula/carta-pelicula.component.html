@@ -1,0 +1,8 @@
+<div class="card">
+    <img class="card-img-top" src="{{ Pelicula.Poster }}" alt="">
+    <div class="card-body">
+        <h4 class="card-title">{{ Pelicula.Title }}</h4>
+        <p class="card-text text-muted">{{ Pelicula.Year }}</p>
+        <p><a [routerLink]="['/pelicula', Pelicula.imdbID]">Ver más</a></p>
+    </div>
+</div>
